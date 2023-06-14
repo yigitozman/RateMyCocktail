@@ -1,0 +1,152 @@
+{% load static %}
+{% if user.is_authenticated %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>RMC | Random</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+          <img src="{% static '/logo.png' %}" width="50" height="50" alt="logo">
+          <p class="text-white text-right">RMC</p>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="community">Community</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="newrecipe">New Recipe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+        <h1 class="text-center">Random Cocktail from CocktailDB</h1>
+      
+
+        <div class="container mt-5">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th></th>
+                      <th>Cocktail</th>
+                      <th>Ingredients</th>
+                      <th>Recipe</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for cocktails in cocktails %}
+                  <tr>
+                      <td><img src="{{ cocktails.strDrinkThumb }}" width="100" height="100"></td>
+                      <td>{{ cocktails.strDrink }}</td>
+                      {% for name, ingredients in ingr.items %}
+                            <td>
+                            <ul>
+                                {% for ingredient in ingredients %}
+                                    <li>{{ ingredient }}</li>
+                                {% endfor %}
+                            </ul>
+                            </td>
+                        {% endfor %}
+                      <td>{{ cocktails.strInstructions }}</td>
+                  </tr>
+                  {% endfor %}    
+              </tbody>
+          </table>
+    </div>
+    </body>
+  </html>
+{% else %}
+  {% load static %}
+
+  <html lang="en">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+      <title>RMC | Random</title>
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="/">
+            <img src="{% static '/logo.png' %}" width="50" height="50" alt="logo">
+            <p class="text-white text-right">RMC</p>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="community">Community</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/register">Register</a>
+              </li>
+              </ul>
+          </div>
+      </nav>
+  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+  
+          <h1 class="text-center">Random Cocktail from CocktailDB</h1>
+        
+  
+          <div class="container mt-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Cocktail</th>
+                        <th>Ingredients</th>
+                        <th>Recipe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cocktails in cocktails %}
+                    <tr>
+                        <td><img src="{{ cocktails.strDrinkThumb }}" width="100" height="100"></td>
+                        <td>{{ cocktails.strDrink }}</td>
+                        {% for name, ingredients in ingr.items %}
+                            <td>
+                            <ul>
+                                {% for ingredient in ingredients %}
+                                    <li>{{ ingredient }}</li>
+                                {% endfor %}
+                            </ul>
+                            </td>
+                        {% endfor %}
+                        <td>{{ cocktails.strInstructions }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+      </div>
+      </body>
+    </html>
+{% endif %}
