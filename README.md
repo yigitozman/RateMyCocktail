@@ -77,7 +77,7 @@ We use Django template language for forms and Bootstrap for styling.
 Clone the project
 
 ```bash
-  git clone https://github.com/egecam/RateMyCocktail.git
+  git clone https://github.com/yigitozman/RateMyCocktail.git
 ```
 
 Go to the project directory
